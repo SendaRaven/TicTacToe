@@ -1,15 +1,26 @@
 import React from 'react'
-import Click from './Click'
+import Board from './Board';
+//import Click from './Click'
 
-class Square extends React.Component {
+class Square extends React.Component  {
+
+
+    //console.log(event.target.value);
+
+
     render() {
-      return (
-        <button className="square">
-          <Click />
-        </button>
-      );
+        console.log(this.props);
+        
+        return (
+            <button
+                className="square"
+                onClick={this.props.playerTurn}
+            >
+                {this.props.valueArray}
+            </button>
+        );
     }
-  }
-  
 
-  export default Square;
+}
+
+export default Square;
