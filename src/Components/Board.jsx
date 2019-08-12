@@ -3,53 +3,52 @@ import Square from './Square'
 
 
 class Board extends React.Component {
-    state = {
-        playerXTrue: true,
-        playerX: "",
-        valueArray: []
-    }
+
 
     playerTurn = (i) => {
 
-if (this.state.valueArray[i]=== undefined) {
-    
-        if (this.state.playerXTrue == true) {
-            let newArray = this.state.valueArray;
-            newArray[i] = "X"
-            return (
+        if (this.props.valueArray[i] === undefined) {
+
+            if (this.props.playerXTrue === true) {
+                let newArray = this.props.valueArray;
+                console.log("i before:",i);
                 
-                this.setState({
-                playerX: "X",
-                valueArray: newArray,
-                playerXTrue: false
+                newArray[i] = "X"
+                console.log("i after:",i);
                 
-            })
-            
-            );
-        } else {
-            let newArray = this.state.valueArray;
-            newArray[i] = "O"
-            return (
-                
-                this.setState({
-                playerX: "O",
-                valueArray: newArray,
-                playerXTrue: true
-                
-            }));
+                console.log(newArray);
+                this.props.childCallback({ playerX: "X", valueArray: newArray[i], playerXTrue: false })
+                // this.setState({
+                // playerX: "X",
+                // valueArray: newArray,
+                // playerXTrue: false
+
+
+
+            } else {
+                let newArray = this.props.valueArray;
+                newArray[i] = "O"
+                this.props.childCallback({ playerX: "O", valueArray: newArray[i], playerXTrue: true })
+                // return (
+
+                //     this.setState({
+                //     playerX: "O",
+                //     valueArray: newArray,
+                //     playerXTrue: true
+
+                // }));
+            }
         }
-    }
-        console.log("t");
 
     }
 
     renderSquare(i) {
-        return <Square playerTurn={()=> this.playerTurn(i)} valueArray={this.state.valueArray[i]} playerXTrue={this.state.playerXTrue} />;
+        return <Square playerTurn={() => this.playerTurn(i)} valueArray={this.props.valueArray[i]} playerXTrue={this.props.playerXTrue} />;
     }
-   
-    
 
-    render() { console.log(this.state);
+
+
+    render() {// console.log(this.props);
         const status = 'Next player: X';
 
         return (
