@@ -11,13 +11,14 @@ class Board extends React.Component {
 
             if (this.props.playerXTrue === true) {
                 let newArray = this.props.valueArray;
-                console.log("i before:",i);
-                
+                //console.log("i before:", i);
+
                 newArray[i] = "X"
-                console.log("i after:",i);
-                
-                console.log(newArray);
+                // console.log("i after:", i);
+
+                //console.log(newArray);
                 this.props.childCallback({ playerX: "X", valueArray: newArray, playerXTrue: false })
+                this.props.checkGameStatus()
                 // this.setState({
                 // playerX: "X",
                 // valueArray: newArray,
@@ -27,9 +28,10 @@ class Board extends React.Component {
 
             } else {
                 let newArray = this.props.valueArray;
-                console.log("i before:",i);
+                //console.log("i before:", i);
                 newArray[i] = "O"
                 this.props.childCallback({ playerX: "O", valueArray: newArray, playerXTrue: true })
+                this.props.checkGameStatus()
                 // return (
 
                 //     this.setState({
@@ -50,7 +52,7 @@ class Board extends React.Component {
 
 
     render() {// console.log(this.props);
-        const status = 'Next player: X';
+        let status = `Next player: ${(this.props.playerXTrue) ? 'X' : 'O'}`;
 
         return (
             <React.Fragment>
