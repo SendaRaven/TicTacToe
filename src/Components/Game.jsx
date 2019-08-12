@@ -4,16 +4,16 @@ class Game extends React.Component {
   state = {
     playerXTrue: true,
     playerX: "",
-    valueArray: []
+    valueArray: []//Array(9).fill(null)
   }
 
   childCallback = (setStateObject) => {
    
     let  setStateValue = setStateObject;
     
-    console.log("setStateValue", setStateValue);
+    console.log("setStateValue", setStateValue)   
 
-    this.setState( setStateValue )
+    this.setState(setStateValue )
     console.log("Updated State:", this.state);
 
   }

@@ -17,18 +17,19 @@ class Board extends React.Component {
                 console.log("i after:",i);
                 
                 console.log(newArray);
-                this.props.childCallback({ playerX: "X", valueArray: newArray[i], playerXTrue: false })
+                this.props.childCallback({ playerX: "X", valueArray: newArray, playerXTrue: false })
                 // this.setState({
                 // playerX: "X",
                 // valueArray: newArray,
-                // playerXTrue: false
+                // playerXTrue: false}
 
 
 
             } else {
                 let newArray = this.props.valueArray;
+                console.log("i before:",i);
                 newArray[i] = "O"
-                this.props.childCallback({ playerX: "O", valueArray: newArray[i], playerXTrue: true })
+                this.props.childCallback({ playerX: "O", valueArray: newArray, playerXTrue: true })
                 // return (
 
                 //     this.setState({
