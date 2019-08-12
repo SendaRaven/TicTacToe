@@ -4,7 +4,7 @@ class Game extends React.Component {
   state = {
     playerXTrue: true,
     playerX: "",
-    valueArray: []//Array(9).fill(null)
+    valueArray: []
   }
 
   childCallback = (setStateObject) => {
