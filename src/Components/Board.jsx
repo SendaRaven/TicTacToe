@@ -7,39 +7,25 @@ class Board extends React.Component {
 
     playerTurn = (i) => {
 
-        if (this.props.valueArray[i] === undefined) {
+        if (this.props.valueArray[i] === null) {
 
             if (this.props.playerXTrue === true) {
+
                 let newArray = this.props.valueArray;
-                //console.log("i before:", i);
-
                 newArray[i] = "X"
-                // console.log("i after:", i);
 
-                //console.log(newArray);
                 this.props.childCallback({ playerX: "X", valueArray: newArray, playerXTrue: false })
                 this.props.checkGameStatus()
-                // this.setState({
-                // playerX: "X",
-                // valueArray: newArray,
-                // playerXTrue: false}
-
 
 
             } else {
+
                 let newArray = this.props.valueArray;
-                //console.log("i before:", i);
                 newArray[i] = "O"
+
                 this.props.childCallback({ playerX: "O", valueArray: newArray, playerXTrue: true })
-                this.props.checkGameStatus()
-                // return (
+                this.props.checkGameStatus();
 
-                //     this.setState({
-                //     playerX: "O",
-                //     valueArray: newArray,
-                //     playerXTrue: true
-
-                // }));
             }
         }
 
