@@ -20,20 +20,24 @@ class Game extends React.Component {
     this.setState(setStateValue);
 
   }
-  isNotNull = () => {
-
-
-
-    if (
-      (for (let i = 0; i < 9; i++) {
+  testArrayHasNull = () => {
+    for (let i = 0; i < 9; i++) {
       if (this.state.valueArray[i] === null) {
-        return false;
+        return true;
       }
+    }
+    return false;
+  }
 
-    })) {
-      return
+  isNotNull = () => {
+    console.log("test", this.testArrayHasNull());
+    if (this.testArrayHasNull() === true) {
+      return false;
+    } else {
+      return true;
     }
   }
+
 
   checkWinner = () => {
     const lines = [
@@ -50,23 +54,23 @@ class Game extends React.Component {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (this.state.valueArray[a] && this.state.valueArray[a] === this.state.valueArray[b] && this.state.valueArray[a] === this.state.valueArray[c]) {
+        [a, b, c].map(item => {
+          let winnerSquares = document.getElementsByClassName("square")
+          winnerSquares[item].classList.toggle("winner")
+        })
         return this.state.valueArray[a];
       }
     }
-    return null;
+    return false;
   }
 
   checkGameStatus = () => {
 
-    console.log(!this.isNotNull, this.checkWinner);
+    console.log(this.isNotNull(), this.checkWinner());
 
-    if (this.isNotNull() == true && this.checkWinner() == null) {
-      this.setState({
-        gameStatus1: `There is no winner! `
-      })
-    }
 
-    else if (this.checkWinner() !== null) {
+
+    if (this.checkWinner() !== false) {
 
       this.setState({
         gameStatus1: `${this.checkWinner()} is the winner! `,
@@ -79,6 +83,11 @@ class Game extends React.Component {
           }
         }
         )
+      })
+
+    } else if (this.isNotNull() === true && this.checkWinner() === false) {
+      this.setState({
+        gameStatus1: `There is no winner! `
       })
     }
 
