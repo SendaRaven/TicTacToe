@@ -20,24 +20,6 @@ class Game extends React.Component {
     this.setState(setStateValue);
 
   }
-  testArrayHasNull = () => {
-    for (let i = 0; i < 9; i++) {
-      if (this.state.valueArray[i] === null) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  isNotNull = () => {
-    console.log("test", this.testArrayHasNull());
-    if (this.testArrayHasNull() === true) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
 
   checkWinner = () => {
     const lines = [
@@ -66,11 +48,7 @@ class Game extends React.Component {
 
   checkGameStatus = () => {
 
-    console.log(this.isNotNull(), this.checkWinner());
-
-
-
-    if (this.checkWinner() !== false) {
+     if (this.checkWinner() !== false) {
 
       this.setState({
         gameStatus1: `${this.checkWinner()} is the winner! `,
@@ -85,7 +63,7 @@ class Game extends React.Component {
         )
       })
 
-    } else if (this.isNotNull() === true && this.checkWinner() === false) {
+    } else if (this.state.valueArray.includes(null) !== true && this.checkWinner() === false) {
       this.setState({
         gameStatus1: `There is no winner! `
       })
