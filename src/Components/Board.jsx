@@ -25,7 +25,6 @@ class Board extends React.Component {
 
                 this.props.childCallback({ playerX: "O", valueArray: newArray, playerXTrue: true })
                 this.props.checkGameStatus();
-
             }
         }
 
@@ -35,9 +34,7 @@ class Board extends React.Component {
         return <Square playerTurn={() => this.playerTurn(i)} valueArray={this.props.valueArray[i]} playerXTrue={this.props.playerXTrue} />;
     }
 
-
-
-    render() {// console.log(this.props);
+    render() {
         let status = `Next player: ${(this.props.playerXTrue) ? 'X' : 'O'}`;
 
         return (

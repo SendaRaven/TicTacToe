@@ -9,9 +9,7 @@ class Game extends React.Component {
       playerX: "",
       valueArray: Array(9).fill(null),
       gameStatus1: "Go on playing!"
-
     }
-
   };
 
   childCallback = (setStateObject) => {
@@ -34,14 +32,13 @@ class Game extends React.Component {
     ];
 
     for (let i = 0; i < 8; i++) {
-      
+
       const [a, b, c] = lines[i];
 
       if (this.state.valueArray[a] && this.state.valueArray[a] === this.state.valueArray[b] && this.state.valueArray[a] === this.state.valueArray[c]) {
-   
-        [a,b,c].map(item => {
+        [a, b, c].map(item => {
           let winnerSquares = document.getElementsByClassName("square");
-          winnerSquares[item].classList.toggle("winner",true)
+          winnerSquares[item].classList.toggle("winner", true)
         })
 
         return this.state.valueArray[a];
@@ -52,7 +49,7 @@ class Game extends React.Component {
 
   checkGameStatus = () => {
 
-     if (this.checkWinner() !== false) {
+    if (this.checkWinner() !== false) {
 
       this.setState({
         gameStatus1: `${this.checkWinner()} is the winner! `,
@@ -72,8 +69,6 @@ class Game extends React.Component {
         gameStatus1: `There is no winner! `
       })
     }
-
-
   }
 
   render() {
@@ -86,7 +81,7 @@ class Game extends React.Component {
           <div className="col-sm-4 game-info">
             <p className="h2">{this.state.gameStatus1}</p>
             <ul className="nav nav-pills flex-column">
-              {/* TODO */}
+              {/* TODO maybe in the future*/}
             </ul>
           </div>
         </section>
