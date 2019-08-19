@@ -33,13 +33,17 @@ class Game extends React.Component {
       [2, 4, 6],
     ];
 
-    for (let i = 0; i < lines.length; i++) {
+    for (let i = 0; i < 8; i++) {
+      
       const [a, b, c] = lines[i];
+
       if (this.state.valueArray[a] && this.state.valueArray[a] === this.state.valueArray[b] && this.state.valueArray[a] === this.state.valueArray[c]) {
-        [a, b, c].map(item => {
-          let winnerSquares = document.getElementsByClassName("square")
-          winnerSquares[item].classList.toggle("winner")
+   
+        [a,b,c].map(item => {
+          let winnerSquares = document.getElementsByClassName("square");
+          winnerSquares[item].classList.toggle("winner",true)
         })
+
         return this.state.valueArray[a];
       }
     }
